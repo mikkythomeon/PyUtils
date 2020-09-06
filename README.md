@@ -3,7 +3,8 @@ Included are a bunch of useful python utilities that can be used for various oth
 
 MasterDataModel.py models the behavour of a Dialog that contains 1 selector widget, a groupBox containing edit controls, and an array of buttons for manipulating objects. Controls are enabled and disabled based on the state of the form. This behaviour can be added to an existing dialog in a single line of code
 
-Files: 
+MasterData Files: 
+===================================================
 MasterDataDialog.PNG - an example of the type of Dialog that is used
 
 ManageCustomers.py - file generated using Qt Designer and convertedto Python code using pyuic5
