@@ -16,6 +16,10 @@ class ManageCustomersModel(QDialog):
         #all the validation was taken care of by the MasterDataModel
         self.ui.btnSave.clicked.connect(self.onSave)
         
+        #we need to validate that the path names actually exist, so we create a custom validator to validate the paths 
+        validator = FilePathValidator(self)
+        self.ui.txtScriptPath.setValidator(validator)
+        self.ui.txtInputPath.setValidator(validator)
         
     def onSave(self):
         print("save data here")
@@ -27,6 +31,3 @@ if __name__ =="__main__":
     myform = ManageCustomersModel()
     myform.show()
     sys.exit(app.exec_())
-    
-    
-

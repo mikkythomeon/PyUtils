@@ -1,4 +1,18 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
+import os
+
+#https://stackoverflow.com/questions/23101267/pyqt-qvalidator-function-definition
+class FilePathValidator(QtGui.QValidator):
+    def __init__(self,parent):
+        QtGui.QValidator.__init__(self, parent)
+        
+    def validate(self,s,pos):
+        result = QtGui.QValidator.Acceptable
+        if len(s)==0: 
+            result = QtGui.QValidator.Intermediate
+        elif not os.path.exists(s): result = QtGui.QValidator.Invalid
+        return (result,s,pos)
+    
 
 class  MasterDataModel():
     def __init__(self, AddButton, SaveButton,CancelButton, DeleteButton,EditGroup, SelectorControl):
