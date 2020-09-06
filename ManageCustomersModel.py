@@ -1,6 +1,6 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets, Qt
-from PyQt5.QtWidgets import QApplication, QDialog
+from PyQt5.QtWidgets import QApplication, QDialog, QFileDialog
 from ManageCustomers import Ui_ManageCustomersDialog
 from MasterDataModel import *
 
@@ -15,6 +15,8 @@ class ManageCustomersModel(QDialog):
         #wire up the save button to save the data to the database
         #all the validation was taken care of by the MasterDataModel
         self.ui.btnSave.clicked.connect(self.onSave)
+        self.ui.btnScriptPath.clicked.connect(self.findScript)
+        self.ui.btnInputPath.clicked.connect(self.findInput)
         
         #we need to validate that the path names actually exist, so we create a custom validator to validate the paths 
         validator = FilePathValidator(self)
@@ -24,6 +26,18 @@ class ManageCustomersModel(QDialog):
     def onSave(self):
         print("save data here")
         
+    def findScript(self):
+        filename = self.getFileName("Python scripts (*.py)")
+        self.ui.txtScriptPath.setText(filename)
+        
+    def findInput(self):
+        filename = self.getFileName("Source files (*.xlsx *.csv)")
+        self.ui.txtInputPath.setText(filename)
+        
+    def getFileName(self, filterString):
+        files = QtWidgets.QFileDialog.getOpenFileName(self,"Find File","/",filterString)
+        return(files[0])
+
           
 
 if __name__ =="__main__":
