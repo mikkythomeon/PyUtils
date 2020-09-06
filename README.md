@@ -5,8 +5,11 @@ MasterDataModel.py models the behavour of a Dialog that contains 1 selector widg
 
 Files: 
 MasterDataDialog.PNG - an example of the type of Dialog that is used
+
 ManageCustomers.py - file generated using Qt Designer and convertedto Python code using pyuic5
+
 ManageCustomersModel.py - file that consumes the ManageCustomers.py code. This is an example of how to use MasterDataModel
+
 MasterDataModel.py - called by ManageCustomersModel to manage the behaviour of objects in relation to the current state of the form, either {INIT,ADD,EDIT}
 
 
