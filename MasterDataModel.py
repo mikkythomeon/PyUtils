@@ -38,7 +38,7 @@ class  MasterDataModel():
             child.textChanged.connect(self.onFieldDataChanged)
             #add default validation to all the applicable line edits and text 
             #edit controls in the EditControls group. This can always be changed outside of this class later
-            regexp = QtCore.QRegExp('^[a-zA-Z0-9]+$')
+            regexp = QtCore.QRegExp('^[a-zA-Z0-9_ ]+$')
             validator = QtGui.QRegExpValidator(regexp)
             child.setValidator(validator)        
         self.onInitializeUi()
