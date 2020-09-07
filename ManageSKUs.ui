@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ManageCustomersDialog</class>
- <widget class="QDialog" name="ManageCustomersDialog">
+ <class>ManageSKUsDialog</class>
+ <widget class="QDialog" name="ManageSKUsDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>714</width>
-    <height>451</height>
+    <width>545</width>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Manage Customers</string>
+   <string>Manage SKUs</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -19,7 +19,7 @@
      <x>20</x>
      <y>9</y>
      <width>511</width>
-     <height>431</height>
+     <height>521</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -44,11 +44,11 @@
       <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>180</height>
+        <height>250</height>
        </size>
       </property>
       <property name="title">
-       <string>Customer Data</string>
+       <string>SKU Data</string>
       </property>
       <widget class="QWidget" name="gridLayoutWidget">
        <property name="geometry">
@@ -56,32 +56,23 @@
          <x>10</x>
          <y>20</y>
          <width>481</width>
-         <height>141</height>
+         <height>221</height>
         </rect>
        </property>
-       <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="txtCustomerName"/>
-        </item>
+       <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
         <item row="3" column="0">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="label_5">
           <property name="text">
-           <string>Input Filename</string>
+           <string>Defy SKU</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="label">
           <property name="text">
-           <string>Script Path:</string>
+           <string>Customer SKU</string>
           </property>
          </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="txtScriptPath"/>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="txtInputPath"/>
         </item>
         <item row="0" column="0">
          <widget class="QLabel" name="label_2">
@@ -90,17 +81,23 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="3">
-         <widget class="QPushButton" name="btnScriptPath">
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="txtCustomerSKU">
           <property name="text">
-           <string>...</string>
+           <string/>
           </property>
          </widget>
         </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="btnInputPath">
+        <item row="0" column="1">
+         <widget class="QComboBox" name="cbCustomer"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QComboBox" name="cbDefySKU"/>
+        </item>
+        <item row="3" column="2">
+         <widget class="QPushButton" name="btnRefreshSKU">
           <property name="text">
-           <string>...</string>
+           <string>Refresh SKUs</string>
           </property>
          </widget>
         </item>
@@ -161,59 +158,25 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>540</x>
-     <y>210</y>
-     <width>160</width>
-     <height>121</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
-     <widget class="QPushButton" name="btnManageBranches">
-      <property name="text">
-       <string>Manage Branches</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnManageSKUs">
-      <property name="text">
-       <string>Manage SKUs...</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnConvertFiles">
-      <property name="text">
-       <string>Convert Source Data Files</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
  </widget>
  <tabstops>
   <tabstop>tvwItems</tabstop>
-  <tabstop>txtCustomerName</tabstop>
-  <tabstop>txtScriptPath</tabstop>
-  <tabstop>btnScriptPath</tabstop>
-  <tabstop>txtInputPath</tabstop>
-  <tabstop>btnInputPath</tabstop>
+  <tabstop>cbCustomer</tabstop>
+  <tabstop>txtCustomerSKU</tabstop>
+  <tabstop>cbDefySKU</tabstop>
   <tabstop>btnAdd</tabstop>
   <tabstop>btnSave</tabstop>
   <tabstop>btnCancel</tabstop>
   <tabstop>btnDelete</tabstop>
   <tabstop>btnClose</tabstop>
+  <tabstop>btnRefreshSKU</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
    <sender>btnClose</sender>
    <signal>clicked()</signal>
-   <receiver>ManageCustomersDialog</receiver>
+   <receiver>ManageSKUsDialog</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
