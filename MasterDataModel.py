@@ -33,14 +33,16 @@ class  MasterDataModel():
         self.SaveButton.clicked.connect(self.onSaveButtonPressed)
         
                 
-        for child in self.EditGroup.findChildren(QtWidgets.QLineEdit):
-            print(self.ActionState)
-            child.textChanged.connect(self.onFieldDataChanged)
-            #add default validation to all the applicable line edits and text 
-            #edit controls in the EditControls group. This can always be changed outside of this class later
-            regexp = QtCore.QRegExp('^[a-zA-Z0-9_ ]+$')
-            validator = QtGui.QRegExpValidator(regexp)
-            child.setValidator(validator)        
+        for child in self.EditGroup.findChildren(QtWidgets.QWidget):
+            if type(child)==QtWidgets.QLineEdit:
+                child.textChanged.connect(self.onFieldDataChanged)
+                #add default validation to all the applicable line edits and text 
+                #edit controls in the EditControls group. This can always be changed outside of this class later
+                regexp = QtCore.QRegExp('^[a-zA-Z0-9_ ]+$')
+                validator = QtGui.QRegExpValidator(regexp)
+                child.setValidator(validator)    
+            elif type(child)==QtWidgets.QComboBox:
+                child.currentIndexChanged.connect(self.onFieldDataChanged)
         self.onInitializeUi()
         
     #https://snorfalorpagus.net/blog/2014/08/09/validating-user-input-in-pyqt4-using-qvalidator/
@@ -61,12 +63,17 @@ class  MasterDataModel():
         #This one will drive you crazy because the widgets are not children of the QDialog!!!!
         validcount = 0
         counter = 0
-        for child in self.EditGroup.findChildren(QtWidgets.QLineEdit):
-            counter+=1
-            validator = child.validator()
-            if validator!=None:
-                state = validator.validate(child.text(), 0)[0] 
-                if state==QtGui.QValidator.Acceptable:
+        for child in self.EditGroup.findChildren(QtWidgets.QWidget):
+            if type(child)==QtWidgets.QLineEdit:
+                counter+=1
+                validator = child.validator()
+                if validator!=None:
+                    state = validator.validate(child.text(), 0)[0] 
+                    if state==QtGui.QValidator.Acceptable:
+                        validcount+=1
+            elif type(child)==QtWidgets.QComboBox:
+                counter+=1
+                if child.currentIndex()!=-1:
                     validcount+=1
         self.SaveButton.setEnabled((validcount==counter) and (self.ActionState!='INIT'))
                         
